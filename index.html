@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PROTOCOLO MENTALIDADE DIRETA - 21 Dias para Virar Máquina de Disciplina</title>
-    <meta name="description" content="Protocolo completo de 21 dias para construir disciplina brutal e se tornar uma máquina de execução.">
+    <title>DIRECT MINDSET PROTOCOL</title>
+    <meta name="description" content="21 Dias para se Tornar uma Máquina de Disciplina. Sem desculpas. Sem motivação. Apenas execução.">
     <style>
         * {
             margin: 0;
@@ -20,1118 +20,602 @@
             --muted-foreground: #CCCCCC;
             --card: #1a1a1a;
             --border: #333333;
+            --accent-green: #00FF00;
         }
 
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            font-family: 'Courier New', Courier, monospace;
             background-color: var(--background);
             color: var(--foreground);
             line-height: 1.6;
             overflow-x: hidden;
+            background-image: 
+                repeating-linear-gradient(
+                    45deg,
+                    transparent,
+                    transparent 10px,
+                    rgba(255, 51, 0, 0.05) 10px,
+                    rgba(255, 51, 0, 0.05) 20px
+                );
         }
 
         .container {
-            display: flex;
-            height: 100vh;
-            max-width: 100%;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
         }
 
-        /* SIDEBAR */
-        .sidebar {
-            width: 280px;
-            background-color: var(--card);
-            border-right: 2px solid var(--primary);
-            overflow-y: auto;
-            padding: 20px;
+        /* HEADER */
+        header {
+            border-bottom: 4px solid var(--border);
+            padding: 60px 20px;
+            text-align: center;
             position: relative;
-            z-index: 100;
+            overflow: hidden;
         }
 
-        .sidebar.mobile-hidden {
-            display: none;
+        header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image: 
+                repeating-linear-gradient(
+                    45deg,
+                    transparent,
+                    transparent 20px,
+                    rgba(255, 51, 0, 0.1) 20px,
+                    rgba(255, 51, 0, 0.1) 40px
+                );
+            pointer-events: none;
         }
 
-        .sidebar-header {
-            font-weight: bold;
-            font-size: 14px;
+        .protocol-badge {
+            display: inline-block;
+            border: 2px solid var(--primary);
+            padding: 8px 16px;
+            margin-bottom: 30px;
+            font-size: 12px;
             text-transform: uppercase;
+            letter-spacing: 2px;
             color: var(--primary);
-            margin-bottom: 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
+            animation: pulse 2s infinite;
+            position: relative;
+            z-index: 1;
         }
 
-        .close-sidebar {
-            display: none;
-            background: none;
-            border: none;
-            color: var(--foreground);
-            cursor: pointer;
-            font-size: 20px;
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.5; }
         }
 
-        .toc-item {
-            padding: 12px;
-            margin-bottom: 8px;
-            cursor: pointer;
-            border-left: 3px solid transparent;
-            transition: all 0.2s;
-            font-size: 14px;
-            word-break: break-word;
-        }
-
-        .toc-item.level-1 {
+        h1 {
+            font-size: 4em;
             font-weight: bold;
-            padding-left: 12px;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            margin-bottom: 20px;
+            line-height: 1.2;
+            position: relative;
+            z-index: 1;
         }
 
-        .toc-item.level-2 {
-            padding-left: 24px;
+        .tagline {
+            font-size: 1.2em;
             color: var(--muted-foreground);
-            font-size: 13px;
+            margin-bottom: 10px;
+            position: relative;
+            z-index: 1;
         }
 
-        .toc-item:hover {
-            background-color: rgba(255, 51, 0, 0.1);
-            border-left-color: var(--primary);
+        .tagline strong {
+            color: var(--foreground);
         }
 
-        .toc-item.active {
-            background-color: rgba(255, 51, 0, 0.2);
-            border-left-color: var(--primary);
-            color: var(--primary);
-        }
-
-        /* MAIN CONTENT */
-        .main-content {
-            flex: 1;
+        /* CTA BUTTONS */
+        .cta-buttons {
             display: flex;
-            flex-direction: column;
-            overflow: hidden;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 40px;
+            position: relative;
+            z-index: 1;
         }
 
-        .header {
-            background-color: var(--card);
-            border-bottom: 2px solid var(--primary);
-            padding: 20px;
+        .cta-button {
+            border: 3px solid var(--primary);
+            background-color: var(--primary);
+            color: var(--primary-foreground);
+            padding: 16px 32px;
+            font-size: 16px;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            cursor: pointer;
+            transition: all 0.2s;
+            font-family: 'Courier New', Courier, monospace;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .cta-button:hover {
+            background-color: var(--background);
+            color: var(--primary);
+            transform: scale(1.05);
+        }
+
+        .cta-button.secondary {
+            background-color: transparent;
+            color: var(--accent-green);
+            border-color: var(--accent-green);
+        }
+
+        .cta-button.secondary:hover {
+            background-color: var(--accent-green);
+            color: var(--background);
+        }
+
+        /* STATUS BAR */
+        .status-bar {
             display: flex;
             justify-content: space-between;
             align-items: center;
-            gap: 20px;
+            padding: 12px 20px;
+            background-color: var(--card);
+            border-top: 2px solid var(--border);
+            border-bottom: 2px solid var(--border);
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin: 40px 0;
         }
 
-        .header-left {
-            display: flex;
-            gap: 15px;
-            align-items: center;
-        }
-
-        .toggle-sidebar {
-            display: none;
-            background: none;
-            border: none;
-            color: var(--foreground);
-            cursor: pointer;
-            font-size: 20px;
-        }
-
-        .progress-bar {
-            flex: 1;
-            height: 4px;
-            background-color: var(--border);
-            border-radius: 2px;
-            overflow: hidden;
-            max-width: 200px;
-        }
-
-        .progress-fill {
-            height: 100%;
-            background-color: var(--primary);
-            transition: width 0.3s;
-        }
-
-        .header-right {
+        .status-item {
             display: flex;
             gap: 10px;
             align-items: center;
         }
 
-        .font-control {
-            display: flex;
-            gap: 8px;
-            align-items: center;
-        }
-
-        .font-btn {
-            background-color: var(--border);
-            border: 1px solid var(--primary);
-            color: var(--foreground);
-            padding: 8px 12px;
-            cursor: pointer;
-            font-size: 12px;
-            text-transform: uppercase;
-            transition: all 0.2s;
-        }
-
-        .font-btn:hover {
-            background-color: var(--primary);
-            color: var(--primary-foreground);
-        }
-
-        .content-area {
-            flex: 1;
-            overflow-y: auto;
-            padding: 40px;
-        }
-
-        .section {
-            display: none;
-            animation: fadeIn 0.3s;
-        }
-
-        .section.active {
-            display: block;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; }
-            to { opacity: 1; }
-        }
-
-        .section h1 {
-            font-size: 2.5em;
-            font-weight: bold;
-            text-transform: uppercase;
-            margin-bottom: 20px;
-            color: var(--foreground);
-        }
-
-        .section h2 {
-            font-size: 1.8em;
-            font-weight: bold;
-            margin-top: 30px;
-            margin-bottom: 15px;
-            color: var(--foreground);
-        }
-
-        .section h3 {
-            font-size: 1.3em;
-            font-weight: bold;
-            margin-top: 20px;
-            margin-bottom: 10px;
-            color: var(--foreground);
-        }
-
-        .section p {
-            margin-bottom: 15px;
-            line-height: 1.8;
-        }
-
-        .section strong {
-            color: var(--primary);
-        }
-
-        .section ul {
-            margin-left: 20px;
-            margin-bottom: 15px;
-        }
-
-        .section li {
-            margin-bottom: 8px;
-        }
-
-        .card {
-            background-color: var(--card);
-            border: 2px solid var(--primary);
-            padding: 20px;
-            margin: 20px 0;
-        }
-
-        .blockquote {
-            border-left: 4px solid var(--primary);
-            padding-left: 20px;
-            margin: 20px 0;
-            font-style: italic;
+        .status-label {
             color: var(--muted-foreground);
         }
 
-        .table-container {
-            overflow-x: auto;
-            margin: 20px 0;
-        }
-
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            border: 2px solid var(--primary);
-        }
-
-        th {
-            background-color: var(--primary);
-            color: var(--primary-foreground);
-            padding: 12px;
-            text-align: left;
+        .status-value {
+            color: var(--primary);
             font-weight: bold;
         }
 
-        td {
-            padding: 12px;
-            border-bottom: 1px solid var(--border);
+        .status-value.active {
+            color: var(--accent-green);
         }
 
-        tr:last-child td {
+        /* CONTENT SECTIONS */
+        section {
+            border-bottom: 4px solid var(--border);
+            padding: 60px 20px;
+        }
+
+        section h2 {
+            font-size: 2.5em;
+            text-transform: uppercase;
+            margin-bottom: 30px;
+            letter-spacing: 2px;
+        }
+
+        section h3 {
+            font-size: 1.5em;
+            text-transform: uppercase;
+            margin-top: 30px;
+            margin-bottom: 15px;
+            letter-spacing: 1px;
+        }
+
+        section p {
+            margin-bottom: 15px;
+            line-height: 1.8;
+            color: var(--muted-foreground);
+        }
+
+        section strong {
+            color: var(--primary);
+        }
+
+        .section-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+
+        .section-card {
+            border: 2px solid var(--primary);
+            padding: 20px;
+            background-color: var(--card);
+        }
+
+        .section-card h4 {
+            color: var(--primary);
+            font-size: 1.2em;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+        }
+
+        .section-card p {
+            font-size: 0.9em;
+            color: var(--muted-foreground);
+        }
+
+        /* DAILY CHECKLIST */
+        .daily-checklist {
+            background-color: var(--card);
+            border: 2px solid var(--primary);
+            padding: 30px;
+            margin: 30px 0;
+        }
+
+        .checklist-item {
+            display: flex;
+            align-items: center;
+            padding: 12px 0;
+            border-bottom: 1px solid var(--border);
+            font-size: 0.95em;
+        }
+
+        .checklist-item:last-child {
             border-bottom: none;
         }
 
-        .audio-player {
-            background-color: var(--card);
+        .checklist-checkbox {
+            width: 20px;
+            height: 20px;
             border: 2px solid var(--primary);
-            padding: 20px;
-            margin: 20px 0;
-            display: flex;
-            gap: 15px;
-            align-items: center;
-            flex-wrap: wrap;
-        }
-
-        .play-btn {
-            background-color: var(--primary);
-            border: none;
-            color: var(--primary-foreground);
-            width: 50px;
-            height: 50px;
-            border-radius: 50%;
+            margin-right: 15px;
             cursor: pointer;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 20px;
-            transition: all 0.2s;
+            flex-shrink: 0;
         }
 
-        .play-btn:hover {
-            transform: scale(1.1);
+        .checklist-checkbox.checked {
+            background-color: var(--primary);
+            color: var(--background);
         }
 
-        .audio-controls {
+        .checklist-text {
             flex: 1;
-            min-width: 200px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
         }
 
-        .progress-slider {
-            width: 100%;
-            height: 6px;
-            cursor: pointer;
-            margin-bottom: 8px;
+        /* SYSTEM STATUS */
+        .system-status {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
         }
 
-        .time-display {
-            font-size: 12px;
+        .status-card {
+            border: 2px solid var(--border);
+            padding: 20px;
+            background-color: var(--card);
+            text-align: center;
+        }
+
+        .status-card h4 {
             color: var(--muted-foreground);
+            font-size: 0.9em;
+            text-transform: uppercase;
+            margin-bottom: 10px;
         }
 
-        .volume-control {
-            display: flex;
-            gap: 10px;
-            align-items: center;
+        .status-card .value {
+            font-size: 2em;
+            font-weight: bold;
+            color: var(--primary);
         }
 
-        .volume-slider {
-            width: 100px;
-            height: 4px;
-            cursor: pointer;
+        .status-card .value.positive {
+            color: var(--accent-green);
         }
 
-        .navigation {
+        /* FOOTER */
+        .command-bar {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background-color: var(--primary);
+            color: var(--primary-foreground);
+            padding: 12px 20px;
+            border-top: 4px solid var(--background);
             display: flex;
             justify-content: space-between;
             align-items: center;
-            padding: 20px 40px;
-            border-top: 2px solid var(--primary);
-            background-color: var(--card);
-        }
-
-        .nav-btn {
-            background-color: var(--primary);
-            color: var(--primary-foreground);
-            border: none;
-            padding: 12px 24px;
-            cursor: pointer;
+            font-size: 12px;
             text-transform: uppercase;
-            font-weight: bold;
-            transition: all 0.2s;
+            letter-spacing: 2px;
+            z-index: 100;
         }
 
-        .nav-btn:hover:not(:disabled) {
-            transform: scale(1.05);
+        .command-bar-left {
+            display: none;
         }
 
-        .nav-btn:disabled {
-            opacity: 0.5;
-            cursor: not-allowed;
+        .command-bar-right {
+            display: flex;
+            gap: 20px;
+            align-items: center;
         }
 
-        .section-counter {
-            font-size: 14px;
-            color: var(--muted-foreground);
-            text-transform: uppercase;
+        @media (min-width: 768px) {
+            .command-bar-left {
+                display: block;
+            }
         }
 
+        /* RESPONSIVE */
         @media (max-width: 768px) {
-            .container {
-                flex-direction: column;
+            h1 {
+                font-size: 2.5em;
             }
 
-            .sidebar {
-                width: 100%;
-                height: auto;
-                max-height: 0;
-                overflow: hidden;
-                transition: max-height 0.3s;
-                border-right: none;
-                border-bottom: 2px solid var(--primary);
-                padding: 0;
-            }
-
-            .sidebar.mobile-open {
-                max-height: 400px;
-                padding: 20px;
-            }
-
-            .sidebar.mobile-hidden {
-                display: block;
-            }
-
-            .close-sidebar {
-                display: block;
-            }
-
-            .toggle-sidebar {
-                display: block;
-            }
-
-            .main-content {
-                height: auto;
-            }
-
-            .content-area {
-                padding: 20px;
-            }
-
-            .header {
-                flex-wrap: wrap;
-            }
-
-            .navigation {
-                padding: 15px 20px;
-            }
-
-            .section h1 {
+            section h2 {
                 font-size: 1.8em;
             }
 
-            .section h2 {
-                font-size: 1.4em;
+            .cta-buttons {
+                flex-direction: column;
+            }
+
+            .cta-button {
+                width: 100%;
+            }
+
+            .command-bar {
+                padding: 8px 12px;
+                font-size: 10px;
+            }
+
+            .command-bar-right {
+                gap: 10px;
             }
         }
 
-        audio {
+        body {
+            padding-bottom: 60px;
+        }
+
+        .hidden {
             display: none;
+        }
+
+        .visible {
+            display: block;
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <!-- SIDEBAR -->
-        <div class="sidebar mobile-hidden" id="sidebar">
-            <div class="sidebar-header">
-                <span>📖 ÍNDICE</span>
-                <button class="close-sidebar" onclick="toggleSidebar()">✕</button>
-            </div>
-            <div id="toc-container"></div>
+    <!-- HEADER -->
+    <header>
+        <div class="protocol-badge">PROTOCOLO INICIADO</div>
+        <h1>PROTOCOLO<br>MENTALIDADE<br>DIRETA</h1>
+        <p class="tagline">21 Dias para se Tornar uma Máquina de Disciplina.<br><strong>Sem desculpas. Sem motivação. Apenas execução.</strong></p>
+        
+        <div class="cta-buttons">
+            <button class="cta-button" onclick="scrollToSection('checklist')">INICIAR PROTOCOLO</button>
+            <button class="cta-button secondary" onclick="scrollToSection('progresso')">RASTREAR PROGRESSO</button>
         </div>
+    </header>
 
-        <!-- MAIN CONTENT -->
-        <div class="main-content">
-            <!-- HEADER -->
-            <div class="header">
-                <div class="header-left">
-                    <button class="toggle-sidebar" onclick="toggleSidebar()">☰</button>
-                    <div class="progress-bar">
-                        <div class="progress-fill" id="progress-fill"></div>
-                    </div>
-                </div>
-                <div class="header-right">
-                    <div class="font-control">
-                        <button class="font-btn" onclick="decreaseFont()">A−</button>
-                        <span id="font-size">16px</span>
-                        <button class="font-btn" onclick="increaseFont()">A+</button>
-                    </div>
-                </div>
-            </div>
-
-            <!-- CONTENT -->
-            <div class="content-area" id="content-area"></div>
-
-            <!-- NAVIGATION -->
-            <div class="navigation">
-                <button class="nav-btn" id="prev-btn" onclick="previousSection()">← Anterior</button>
-                <span class="section-counter"><span id="current-section">1</span> / <span id="total-sections">17</span></span>
-                <button class="nav-btn" id="next-btn" onclick="nextSection()">Próximo →</button>
-            </div>
+    <!-- STATUS BAR -->
+    <div class="status-bar">
+        <div class="status-item">
+            <span class="status-label">Sistema Ativo</span>
+            <span class="status-value">DIA <span id="current-day">01</span>/21</span>
+        </div>
+        <div class="status-item">
+            <span class="status-label">Status:</span>
+            <span class="status-value active">ATIVO</span>
         </div>
     </div>
 
-    <audio id="audio-player"></audio>
+    <div class="container">
+        <!-- MOTIVATION SECTION -->
+        <section>
+            <h2>Motivação<br><span style="color: var(--primary);">É Uma Mentira.</span></h2>
+            <p>Você está preso porque espera "ter vontade". O Protocolo Mentalidade Direta destrói essa fraqueza.</p>
+            <p>Disciplina é uma máquina. Ela funciona quer você esteja cansado, entediado ou com medo. Isso não é autoajuda. Isso é um manual para reconstruir sua psicologia.</p>
+            
+            <div class="section-grid">
+                <div class="section-card">
+                    <h4>01.</h4>
+                    <p>Ação Acima da Emoção</p>
+                </div>
+                <div class="section-card">
+                    <h4>02.</h4>
+                    <p>Desconforto Primeiro</p>
+                </div>
+                <div class="section-card">
+                    <h4>03.</h4>
+                    <p>Rastreie ou Minta</p>
+                </div>
+                <div class="section-card">
+                    <h4>04.</h4>
+                    <p>Apenas Execução</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- RESULTS SECTION -->
+        <section>
+            <h2>Resultados Reais</h2>
+            <div class="system-status">
+                <div class="status-card">
+                    <h4>Completaram os 21 dias</h4>
+                    <div class="value positive">100%</div>
+                </div>
+                <div class="status-card">
+                    <h4>Aumento médio de produtividade</h4>
+                    <div class="value">+250%</div>
+                </div>
+                <div class="status-card">
+                    <h4>Desistências após dia 7</h4>
+                    <div class="value positive">0</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- DAILY CHECKLIST -->
+        <section id="checklist">
+            <h2>Protocolo Diário</h2>
+            <p>Rastreando execução para o Dia <span id="checklist-day">01</span></p>
+            
+            <div style="margin: 20px 0; background-color: var(--card); border: 2px solid var(--primary); padding: 20px;">
+                <p style="text-transform: uppercase; margin-bottom: 10px;">Conclusão</p>
+                <div style="width: 100%; height: 30px; background-color: var(--border); border: 2px solid var(--primary);">
+                    <div id="progress-bar" style="width: 0%; height: 100%; background-color: var(--primary); transition: width 0.3s;"></div>
+                </div>
+                <p style="text-align: right; margin-top: 10px; color: var(--primary); font-weight: bold;"><span id="progress-percent">0</span>%</p>
+            </div>
+
+            <div class="daily-checklist">
+                <h3 style="margin-top: 0;">Lista de Verificação de Execução</h3>
+                <div class="checklist-item">
+                    <div class="checklist-checkbox" onclick="toggleCheckbox(this)"></div>
+                    <div class="checklist-text">Acordar: 05:00 (Sem Soneca)</div>
+                </div>
+                <div class="checklist-item">
+                    <div class="checklist-checkbox" onclick="toggleCheckbox(this)"></div>
+                    <div class="checklist-text">Cama Arrumada: Padrão Militar</div>
+                </div>
+                <div class="checklist-item">
+                    <div class="checklist-checkbox" onclick="toggleCheckbox(this)"></div>
+                    <div class="checklist-text">Respiração: 5 Minutos</div>
+                </div>
+                <div class="checklist-item">
+                    <div class="checklist-checkbox" onclick="toggleCheckbox(this)"></div>
+                    <div class="checklist-text">Treino: 20 Min Intensidade</div>
+                </div>
+                <div class="checklist-item">
+                    <div class="checklist-checkbox" onclick="toggleCheckbox(this)"></div>
+                    <div class="checklist-text">TMI: 45 Min Trabalho Profundo</div>
+                </div>
+                <div class="checklist-item">
+                    <div class="checklist-checkbox" onclick="toggleCheckbox(this)"></div>
+                    <div class="checklist-text">Leitura: 10 Min Não-Ficção</div>
+                </div>
+                <div class="checklist-item">
+                    <div class="checklist-checkbox" onclick="toggleCheckbox(this)"></div>
+                    <div class="checklist-text">Revisão Noturna: Honestidade Brutal</div>
+                </div>
+            </div>
+
+            <h3>Comando de Disciplina</h3>
+            <p style="font-style: italic; color: var(--primary); font-size: 1.1em;">"Hoje, eu faço o que é necessário, não o que é confortável."</p>
+
+            <h3>Anti-Procrastinação</h3>
+            <p><strong>Regra dos 10 Segundos:</strong> Mova-se antes que seu cérebro negocie.</p>
+        </section>
+
+        <!-- PROGRESS TRACKING -->
+        <section id="progresso">
+            <h2>Status do Sistema</h2>
+            <div class="system-status">
+                <div class="status-card">
+                    <h4>Força de Vontade</h4>
+                    <div class="value">N/A</div>
+                </div>
+                <div class="status-card">
+                    <h4>Disciplina</h4>
+                    <div class="value positive">100%</div>
+                </div>
+                <div class="status-card">
+                    <h4>Desculpas</h4>
+                    <div class="value positive">0%</div>
+                </div>
+            </div>
+
+            <h3>Próximas Ações</h3>
+            <p>Você tem um protocolo. Você tem um sistema. Agora você tem uma escolha: executar ou falhar. Não há meio termo.</p>
+        </section>
+    </div>
+
+    <!-- COMMAND BAR -->
+    <div class="command-bar">
+        <div class="command-bar-left">
+            COMANDO: EXECUTE. SEM EMOÇÃO.
+        </div>
+        <div class="command-bar-right">
+            <span>SISTEMA ATIVO</span>
+            <span>DIA <span id="footer-day">01</span>/21</span>
+        </div>
+    </div>
 
     <script>
-        // STATE
-        let currentSection = 0;
-        let fontSize = 16;
-        const sections = [
-            {
-                id: 'introducao',
-                title: 'Introdução',
-                level: 1,
-                content: `
-                    <h1>Protocolo Mentalidade Direta</h1>
-                    <p style="font-size: 1.3em; color: var(--primary); margin-bottom: 20px;">21 Dias para se Tornar uma Máquina de Disciplina</p>
-                    
-                    <div class="blockquote">"Sem desculpas. Sem motivação. Apenas execução."</div>
-
-                    <h2>Você está aqui porque sua vida está uma bagunça.</h2>
-                    <p>Você tem metas, mas falta disciplina para alcançá-las. Você está preso em um ciclo de procrastinação, autossabotagem e arrependimento. Você já tentou de tudo: motivação, inspiração, pensamento positivo. Tudo falhou.</p>
-
-                    <h3>Por Que Você Está Aqui</h3>
-                    <p>Isso acontece porque mentiram para você. Disseram que você precisa se sentir bem para agir. <strong>Isso é mentira.</strong> Motivação é uma emoção passageira. Disciplina é um sistema. É um protocolo. É uma máquina que você constrói, e ela funciona quer você queira ou não.</p>
-
-                    <h3>A Verdade Sobre Força de Vontade</h3>
-                    <p>Força de vontade é um mito. É um recurso finito que você esgota cada vez que toma uma decisão. Você não pode depender dela. Você precisa de um sistema que elimine a necessidade de força de vontade.</p>
-
-                    <h3>O Que Este Manual Oferece</h3>
-                    <p>Este não é um livro de autoajuda. Este é um manual. Este é um protocolo de 21 dias para reconstruir você do zero. Vai ser brutal. Vai ser desconfortável. Vai exigir tudo de você. Mas se você seguir, vai se tornar uma máquina de disciplina.</p>
-                `
-            },
-            {
-                id: 'leis',
-                title: 'As 3 Leis Fundamentais',
-                level: 1,
-                content: `
-                    <h1>As 3 Leis Fundamentais</h1>
-                    <p>O Protocolo Mentalidade Direta é construído sobre três leis imutáveis. Cada uma delas é não-negociável.</p>
-
-                    <div class="card">
-                        <h2>Lei 1: Ação Acima da Emoção</h2>
-                        <p><strong>Seus sentimentos são irrelevantes.</strong> Eles são temporários, não confiáveis e um obstáculo direto ao seu progresso.</p>
-                    </div>
-
-                    <div class="card">
-                        <h2>Lei 2: Desconforto Primeiro</h2>
-                        <p>Sua vida inteira é um esforço subconsciente para evitar o desconforto. O crescimento não acontece no conforto. Acontece no fogo da dificuldade voluntária.</p>
-                    </div>
-
-                    <div class="card">
-                        <h2>Lei 3: Rastreie ou Minta para Si Mesmo</h2>
-                        <p>Sua memória é mentirosa. Sem dados objetivos, você está operando com base em sentimentos e autoengano. O Protocolo funciona com a verdade, e a verdade é encontrada nos números.</p>
-                    </div>
-                `
-            },
-            {
-                id: 'lei1',
-                title: 'Lei 1: Ação Acima da Emoção',
-                level: 2,
-                content: `
-                    <h1>Lei 1: Ação Acima da Emoção</h1>
-                    
-                    <h3>Explicação Brutal</h3>
-                    <p>Seus sentimentos são irrelevantes. Eles são temporários, não confiáveis e um obstáculo direto ao seu progresso. Você se sente cansado, entediado, desanimado ou com medo. <strong>E daí?</strong> Esses sentimentos não são um sinal de pare. Eles são ruído.</p>
-
-                    <div class="card">
-                        <h3>Exemplo Prático</h3>
-                        <p>O alarme toca às 05:00. Seu corpo parece pesado. Sua mente grita por mais sono. O antigo você apertaria o soneca. O novo você levanta. Instantaneamente. Você não pensa. Você não sente. Você age.</p>
-                    </div>
-
-                    <h3>Tarefa de Execução</h3>
-                    <p>Nas próximas 24 horas, você operará em um cronograma de ações pré-decididas. Quando chegar a hora de uma tarefa — qualquer tarefa — você a executará sem um único segundo de debate interno.</p>
-                `
-            },
-            {
-                id: 'lei2',
-                title: 'Lei 2: Desconforto Primeiro',
-                level: 2,
-                content: `
-                    <h1>Lei 2: Desconforto Primeiro</h1>
-                    
-                    <h3>Explicação Brutal</h3>
-                    <p>Sua vida inteira é um esforço subconsciente para evitar o desconforto. Você busca prazer, facilidade e o caminho de menor resistência. É por isso que você é fraco. O crescimento não acontece no conforto. Acontece no fogo da dificuldade voluntária.</p>
-
-                    <div class="card">
-                        <h3>Exemplo Prático</h3>
-                        <p>Você tem um bloco de 90 minutos agendado para sua TMI: escrever um relatório difícil. Você também tem uma lista de e-mails fáceis. O antigo você limparia os e-mails primeiro. O novo você abre o relatório e começa a escrever. Os e-mails podem esperar.</p>
-                    </div>
-
-                    <h3>Tarefa de Execução</h3>
-                    <p>Identifique a única tarefa que você tem mais probabilidade de procrastinar amanhã. Este é seu novo alvo de "Primeiro Ataque". Agende-a como a primeira coisa que você fará após sua rotina matinal.</p>
-                `
-            },
-            {
-                id: 'lei3',
-                title: 'Lei 3: Rastreie ou Minta',
-                level: 2,
-                content: `
-                    <h1>Lei 3: Rastreie ou Minta para Si Mesmo</h1>
-                    
-                    <h3>Explicação Brutal</h3>
-                    <p>Sua memória é mentirosa. Sua percepção é distorcida. Você acha que está sendo produtivo. Você acha que está sendo disciplinado. <strong>Você provavelmente está errado.</strong> Sem dados objetivos, você está operando com base em sentimentos e autoengano.</p>
-
-                    <div class="card">
-                        <h3>Exemplo Prático</h3>
-                        <p>Sua meta é ler 10 páginas de um livro todos os dias. No final da semana, você "sente" que foi muito bem. Mas seu rastreador mostra que você leu apenas em 4 dos 7 dias. Os dados revelam a verdade.</p>
-                    </div>
-
-                    <h3>Tarefa de Execução</h3>
-                    <p>Começando hoje, você rastreará três coisas: seu horário de acordar, a conclusão de um hábito específico e o tempo que você gastou na sua TMI. Use um caderno simples ou um arquivo de texto.</p>
-                `
-            },
-            {
-                id: 'anti-procrastinacao',
-                title: 'Manual de Campo Anti-Procrastinação',
-                level: 1,
-                content: `
-                    <h1>Manual de Campo Anti-Procrastinação</h1>
-                    <p>A procrastinação não é uma falha de caráter. É uma falha de sistema. Aqui estão cinco técnicas brutais para eliminá-la.</p>
-
-                    <h2>Técnica 1: Regra dos 10 Segundos</h2>
-                    <p>Quando você identifica uma tarefa que precisa fazer, você tem 10 segundos para começar. Não 10 minutos. Não 10 horas. Dez segundos. Se você não começar em 10 segundos, seu cérebro encontrará uma desculpa.</p>
-
-                    <h2>Técnica 2: Método do Micro-Compromisso</h2>
-                    <p>Não diga "Vou escrever este relatório". Diga "Vou abrir o documento e escrever o primeiro parágrafo". O micro-compromisso elimina o atrito psicológico.</p>
-
-                    <h2>Técnica 3: Matando Gatilhos de Distração</h2>
-                    <p>Identifique os gatilhos que causam procrastinação: notificações, aplicativos, pessoas. Elimine-os fisicamente. Coloque o telefone em outro cômodo. Feche as abas do navegador. Diga às pessoas para não interromperem.</p>
-
-                    <h2>Técnica 4: Regra da Vitória de Uma Tarefa</h2>
-                    <p>Cada dia tem uma tarefa crítica. Apenas uma. Tudo o mais é secundário. Você não sai do dia até que essa tarefa esteja completa. Sem exceções.</p>
-
-                    <h2>Técnica 5: O Protocolo da Responsabilidade</h2>
-                    <p>Você não trabalha sozinho. Você tem um companheiro de responsabilidade. Você relata seu progresso a ele diariamente. Sem relatório = sem progresso.</p>
-                `
-            },
-            {
-                id: 'protocolo-21',
-                title: 'O Protocolo de 21 Dias',
-                level: 1,
-                content: `
-                    <h1>O Protocolo de 21 Dias</h1>
-                    <p>O protocolo é dividido em três fases de sete dias cada uma. Cada fase constrói sobre a anterior.</p>
-
-                    <h2>Fase 1: Fundação (Dias 1-7)</h2>
-                    <p>Você está construindo os blocos de construção. Rotina matinal, rastreamento, primeira tarefa crítica.</p>
-                    <div class="table-container">
-                        <table>
-                            <tr>
-                                <th>Dia</th>
-                                <th>Foco</th>
-                                <th>Ação</th>
-                            </tr>
-                            <tr>
-                                <td>1</td>
-                                <td>Rotina Matinal</td>
-                                <td>Acordar 05:00, cama feita, 5 min respiração</td>
-                            </tr>
-                            <tr>
-                                <td>2</td>
-                                <td>Primeira Tarefa</td>
-                                <td>Identificar TMI, completar antes do almoço</td>
-                            </tr>
-                            <tr>
-                                <td>3</td>
-                                <td>Rastreamento</td>
-                                <td>Registrar tudo: acordar, TMI, exercício</td>
-                            </tr>
-                            <tr>
-                                <td>4</td>
-                                <td>Desconforto</td>
-                                <td>Adicionar 20 min de exercício intenso</td>
-                            </tr>
-                            <tr>
-                                <td>5</td>
-                                <td>Leitura</td>
-                                <td>10 min de leitura não-ficção diária</td>
-                            </tr>
-                            <tr>
-                                <td>6</td>
-                                <td>Revisão</td>
-                                <td>Revisar semana, ajustar sistema</td>
-                            </tr>
-                            <tr>
-                                <td>7</td>
-                                <td>Consolidação</td>
-                                <td>Repetir tudo sem falhas</td>
-                            </tr>
-                        </table>
-                    </div>
-
-                    <h2>Fase 2: Adaptação (Dias 8-14)</h2>
-                    <p>Você está aprofundando. Adicionando complexidade. Testando seus limites.</p>
-                    <p>Nesta fase, você aumenta a intensidade. Acordar mais cedo. TMI mais difícil. Exercício mais brutal. Você está construindo tolerância ao desconforto.</p>
-
-                    <h2>Fase 3: Maestria (Dias 15-21)</h2>
-                    <p>Você não é mais um iniciante. Você é uma máquina. Agora você otimiza.</p>
-                    <p>Nesta fase final, você refinará seu sistema. Você saberá exatamente o que funciona. Você eliminará o desperdício. Você será implacável.</p>
-                `
-            },
-            {
-                id: 'dias-1-7',
-                title: 'Dias 1-7: Fundação',
-                level: 2,
-                content: `
-                    <h1>Dias 1-7: Fundação</h1>
-                    <p>A primeira semana é sobre construir os blocos de construção. Você não está tentando ser perfeito. Você está construindo um sistema que funciona.</p>
-
-                    <h3>Rotina Matinal (Não Negociável)</h3>
-                    <ul>
-                        <li>05:00 - Alarme toca. Você levanta. Sem soneca.</li>
-                        <li>05:05 - Cama feita. Militar. Sem exceções.</li>
-                        <li>05:10 - Banho frio. 3 minutos. Sem aquecimento.</li>
-                        <li>05:15 - Respiração. 5 minutos. Controle seu sistema nervoso.</li>
-                        <li>05:20 - Café. Proteína. Sem açúcar.</li>
-                        <li>05:30 - Leia sua TMI (Tarefa Mais Importante). Relembre o que você vai fazer.</li>
-                    </ul>
-
-                    <h3>Tarefa Mais Importante (TMI)</h3>
-                    <p>Cada dia tem uma TMI. É a tarefa que, se você completar nada mais, você ainda teve um dia bem-sucedido. Sua TMI é de 90 minutos. Sem interrupções. Sem telefone. Sem e-mails.</p>
-
-                    <h3>Rastreamento</h3>
-                    <p>Você rastreará três coisas:</p>
-                    <ul>
-                        <li><strong>Acordar:</strong> 05:00 ou não?</li>
-                        <li><strong>TMI:</strong> Completada ou não?</li>
-                        <li><strong>Exercício:</strong> 20 minutos ou não?</li>
-                    </ul>
-
-                    <h3>Exercício</h3>
-                    <p>20 minutos de exercício intenso. Não é yoga. Não é caminhada. É intenso. Você deve estar suando. Seu coração deve estar acelerado.</p>
-
-                    <h3>Revisão Noturna</h3>
-                    <p>Antes de dormir, você revisa seu dia. Você completou sua TMI? Você acordou no horário? Você se exercitou? Sem julgamento. Apenas dados.</p>
-                `
-            },
-            {
-                id: 'dias-8-14',
-                title: 'Dias 8-14: Adaptação',
-                level: 2,
-                content: `
-                    <h1>Dias 8-14: Adaptação</h1>
-                    <p>Você completou a primeira semana. Agora você aumenta a intensidade. Você não é mais um iniciante.</p>
-
-                    <h3>Mudanças para a Semana 2</h3>
-                    <ul>
-                        <li><strong>Acordar:</strong> 04:30 (30 minutos mais cedo)</li>
-                        <li><strong>TMI:</strong> Aumentar para 120 minutos</li>
-                        <li><strong>Exercício:</strong> Aumentar para 30 minutos</li>
-                        <li><strong>Leitura:</strong> Adicionar 15 minutos de leitura não-ficção</li>
-                        <li><strong>Meditação:</strong> Adicionar 10 minutos de meditação</li>
-                    </ul>
-
-                    <h3>Aumentando a Dificuldade</h3>
-                    <p>Sua TMI agora é mais difícil. Você está trabalhando em projetos que assustam você. Você está aprendendo coisas que parecem impossíveis. Isso é correto. O crescimento acontece no desconforto.</p>
-
-                    <h3>Testando Seus Limites</h3>
-                    <p>Você está descobrindo do que é feito. Você está aprendendo que pode fazer coisas que pensava serem impossíveis. Você está construindo confiança.</p>
-
-                    <h3>Ajustando o Sistema</h3>
-                    <p>Se algo não funciona, você muda. Seu sistema não é sagrado. É um experimento. Você está testando o que funciona para você.</p>
-                `
-            },
-            {
-                id: 'dias-15-21',
-                title: 'Dias 15-21: Maestria',
-                level: 2,
-                content: `
-                    <h1>Dias 15-21: Maestria</h1>
-                    <p>Você está na reta final. Você não é mais um iniciante. Você é uma máquina. Agora você otimiza.</p>
-
-                    <h3>Mudanças para a Semana 3</h3>
-                    <ul>
-                        <li><strong>Acordar:</strong> 04:00 (uma hora antes do original)</li>
-                        <li><strong>TMI:</strong> 150 minutos ou mais</li>
-                        <li><strong>Exercício:</strong> 45 minutos, intensidade máxima</li>
-                        <li><strong>Leitura:</strong> 20 minutos</li>
-                        <li><strong>Meditação:</strong> 15 minutos</li>
-                    </ul>
-
-                    <h3>Refinando Seu Sistema</h3>
-                    <p>Você sabe exatamente o que funciona. Você sabe quando você é mais produtivo. Você sabe qual exercício funciona melhor. Você sabe qual ambiente funciona melhor. Você otimiza tudo.</p>
-
-                    <h3>Implacabilidade</h3>
-                    <p>Você não é mais gentil consigo mesmo. Você sabe do que é capaz. Você não aceita desculpas. Você não aceita fracasso. Você é implacável.</p>
-
-                    <h3>O Que Vem Depois</h3>
-                    <p>Após 21 dias, você não volta ao seu antigo eu. Você mantém o sistema. Você continua melhorando. Você se torna uma máquina de disciplina permanente.</p>
-                `
-            },
-            {
-                id: 'plano-diario',
-                title: 'Plano de Batalha Diário',
-                level: 1,
-                content: `
-                    <h1>Plano de Batalha Diário</h1>
-                    <p>Este é seu cronograma diário. Não é sugestão. É lei.</p>
-
-                    <div class="table-container">
-                        <table>
-                            <tr>
-                                <th>Hora</th>
-                                <th>Atividade</th>
-                                <th>Duração</th>
-                            </tr>
-                            <tr>
-                                <td>05:00</td>
-                                <td>Acordar (sem soneca)</td>
-                                <td>0 min</td>
-                            </tr>
-                            <tr>
-                                <td>05:05</td>
-                                <td>Cama feita</td>
-                                <td>5 min</td>
-                            </tr>
-                            <tr>
-                                <td>05:10</td>
-                                <td>Banho frio</td>
-                                <td>5 min</td>
-                            </tr>
-                            <tr>
-                                <td>05:15</td>
-                                <td>Respiração/Meditação</td>
-                                <td>5 min</td>
-                            </tr>
-                            <tr>
-                                <td>05:20</td>
-                                <td>Café da manhã</td>
-                                <td>10 min</td>
-                            </tr>
-                            <tr>
-                                <td>05:30</td>
-                                <td>TMI (Tarefa Mais Importante)</td>
-                                <td>90-150 min</td>
-                            </tr>
-                            <tr>
-                                <td>08:00</td>
-                                <td>Intervalo/Almoço</td>
-                                <td>30 min</td>
-                            </tr>
-                            <tr>
-                                <td>08:30</td>
-                                <td>Trabalho secundário</td>
-                                <td>120 min</td>
-                            </tr>
-                            <tr>
-                                <td>10:30</td>
-                                <td>Exercício</td>
-                                <td>30-45 min</td>
-                            </tr>
-                            <tr>
-                                <td>11:15</td>
-                                <td>Leitura</td>
-                                <td>15-20 min</td>
-                            </tr>
-                            <tr>
-                                <td>11:35</td>
-                                <td>Tarefas administrativas</td>
-                                <td>30 min</td>
-                            </tr>
-                            <tr>
-                                <td>12:05</td>
-                                <td>Almoço</td>
-                                <td>30 min</td>
-                            </tr>
-                            <tr>
-                                <td>12:35</td>
-                                <td>Trabalho/Projetos</td>
-                                <td>180 min</td>
-                            </tr>
-                            <tr>
-                                <td>16:35</td>
-                                <td>Intervalo</td>
-                                <td>15 min</td>
-                            </tr>
-                            <tr>
-                                <td>16:50</td>
-                                <td>Trabalho final</td>
-                                <td>60 min</td>
-                            </tr>
-                            <tr>
-                                <td>17:50</td>
-                                <td>Revisão do dia</td>
-                                <td>10 min</td>
-                            </tr>
-                            <tr>
-                                <td>18:00</td>
-                                <td>Tempo livre</td>
-                                <td>até 22:00</td>
-                            </tr>
-                            <tr>
-                                <td>22:00</td>
-                                <td>Dormir</td>
-                                <td>-</td>
-                            </tr>
-                        </table>
-                    </div>
-
-                    <h3>Notas Importantes</h3>
-                    <ul>
-                        <li>Este cronograma é flexível apenas em emergências reais.</li>
-                        <li>Você não negocia com você mesmo sobre horários.</li>
-                        <li>Se algo não funciona, você muda o cronograma, mas não o abandona.</li>
-                        <li>Você rastreia tudo. Sem rastreamento = sem progresso.</li>
-                    </ul>
-                `
-            },
-            {
-                id: 'audio-psicopata',
-                title: 'Áudio Modo Psicopata',
-                level: 1,
-                content: `
-                    <h1>Áudio Modo Psicopata</h1>
-                    <p>Este é um áudio de 10 minutos que você ouve todas as manhãs. É brutal. É direto. É verdade.</p>
-                    
-                    <div class="audio-player">
-                        <button class="play-btn" onclick="toggleAudio()">
-                            <span id="play-icon">▶</span>
-                        </button>
-                        <div class="audio-controls">
-                            <input type="range" class="progress-slider" id="progress-slider" min="0" max="100" value="0" onchange="seekAudio(this.value)">
-                            <div class="time-display">
-                                <span id="current-time">0:00</span> / <span id="duration">0:00</span>
-                            </div>
-                        </div>
-                        <div class="volume-control">
-                            <span style="font-size: 12px;">🔊</span>
-                            <input type="range" class="volume-slider" id="volume-slider" min="0" max="100" value="100" onchange="setVolume(this.value)">
-                        </div>
-                    </div>
-
-                    <h3>Transcrição do Áudio</h3>
-                    <p><em>Nota: O áudio será reproduzido acima. Ouça com fones de ouvido para melhor experiência.</em></p>
-                    
-                    <div class="card">
-                        <p><strong>Você acordou porque é hora de acordar. Não porque você quer. Não porque você se sente bem. Porque é hora.</strong></p>
-                        <p>Você levanta da cama. Sem soneca. Sem negociação. Você levanta porque você é uma máquina, e as máquinas não dormem quando há trabalho a fazer.</p>
-                        <p>Você faz sua cama. Militar. Sem exceções. Porque você respeita seu espaço. Porque você respeita você mesmo.</p>
-                        <p>Você toma um banho frio. Três minutos. Seu corpo grita. Sua mente grita. Você fica lá. Porque o crescimento acontece no desconforto. Porque você não é fraco.</p>
-                        <p>Você respira. Cinco minutos. Você controla seu sistema nervoso. Você não deixa suas emoções controlarem você. Você controla elas.</p>
-                        <p>Você come. Proteína. Sem açúcar. Sem lixo. Porque você respeita seu corpo. Porque você sabe que seu corpo é uma ferramenta.</p>
-                        <p>Agora você trabalha. Sua TMI. Noventa minutos. Sem telefone. Sem e-mails. Sem distração. Apenas você e o trabalho.</p>
-                        <p>Você não pensa em como se sente. Você não pensa em como está cansado. Você não pensa em nada. Você apenas trabalha.</p>
-                        <p>Porque você é uma máquina. E as máquinas não têm emoções. As máquinas apenas funcionam.</p>
-                        <p><strong>Você é uma máquina. Agora aja como uma.</strong></p>
-                    </div>
-                `
-            },
-            {
-                id: 'manifesto',
-                title: 'Manifesto Final',
-                level: 1,
-                content: `
-                    <h1>Manifesto Final</h1>
-                    <p>Você chegou aqui. Você completou 21 dias. Você não é mais o mesmo.</p>
-
-                    <div class="blockquote">
-                        "Você não é uma vítima de suas circunstâncias. Você é um produto de suas decisões. E você pode mudar suas decisões a partir de agora."
-                    </div>
-
-                    <h2>O Que Você Aprendeu</h2>
-                    <p>Você aprendeu que disciplina é um sistema, não um sentimento. Você aprendeu que você é capaz de muito mais do que pensava. Você aprendeu que o crescimento é desconfortável, e isso é bom.</p>
-
-                    <h2>O Que Vem Depois</h2>
-                    <p>Você não volta ao seu antigo eu. Você não pode. Você sabe do que é capaz. Você sabe que pode acordar às 5 da manhã. Você sabe que pode trabalhar sem distração. Você sabe que pode ser disciplinado.</p>
-
-                    <p>Agora você mantém o sistema. Você não o abandona. Porque você sabe que funciona. Porque você sabe que você é uma máquina.</p>
-
-                    <h2>Sua Responsabilidade</h2>
-                    <p>Você tem uma responsabilidade agora. Você tem uma responsabilidade consigo mesmo. Você tem uma responsabilidade de continuar. Você não pode voltar para baixo. Você só pode ir para cima.</p>
-
-                    <h2>Você é Uma Máquina de Disciplina</h2>
-                    <p>Você não é motivado. Você não é inspirado. Você é disciplinado. Você é uma máquina. E as máquinas funcionam quer você queira ou não.</p>
-
-                    <p style="margin-top: 30px; font-size: 1.2em; color: var(--primary);"><strong>Sem desculpas. Sem motivação. Apenas execução.</strong></p>
-
-                    <p style="margin-top: 30px; text-align: center; font-size: 1.3em;"><strong>Você conseguiu. Agora mantenha.</strong></p>
-                `
-            }
-        ];
-
-        // INITIALIZATION
+        // Initialize
         function init() {
-            loadState();
-            renderTableOfContents();
-            renderSection();
+            loadDay();
+            loadChecklist();
             updateProgress();
-            setupAudio();
         }
 
-        function renderTableOfContents() {
-            const container = document.getElementById('toc-container');
-            container.innerHTML = sections.map((section, index) => `
-                <div class="toc-item level-${section.level} ${index === currentSection ? 'active' : ''}" 
-                     onclick="goToSection(${index})">
-                    ${section.title}
-                </div>
-            `).join('');
+        function loadDay() {
+            const savedDay = localStorage.getItem('protocol-day') || '1';
+            const day = String(savedDay).padStart(2, '0');
+            document.getElementById('current-day').textContent = day;
+            document.getElementById('checklist-day').textContent = day;
+            document.getElementById('footer-day').textContent = day;
         }
 
-        function renderSection() {
-            const section = sections[currentSection];
-            const contentArea = document.getElementById('content-area');
-            contentArea.innerHTML = `<div class="section active">${section.content}</div>`;
-            
-            // Update TOC
-            document.querySelectorAll('.toc-item').forEach((item, index) => {
-                item.classList.toggle('active', index === currentSection);
-            });
-
-            // Update navigation buttons
-            document.getElementById('prev-btn').disabled = currentSection === 0;
-            document.getElementById('next-btn').disabled = currentSection === sections.length - 1;
-
-            // Update section counter
-            document.getElementById('current-section').textContent = currentSection + 1;
-            document.getElementById('total-sections').textContent = sections.length;
-
+        function toggleCheckbox(element) {
+            element.classList.toggle('checked');
+            element.textContent = element.classList.contains('checked') ? '✓' : '';
             updateProgress();
-            window.scrollTo(0, 0);
+            saveChecklist();
         }
 
         function updateProgress() {
-            const progress = ((currentSection + 1) / sections.length) * 100;
-            document.getElementById('progress-fill').style.width = progress + '%';
+            const checkboxes = document.querySelectorAll('.checklist-checkbox');
+            const checked = document.querySelectorAll('.checklist-checkbox.checked').length;
+            const percent = Math.round((checked / checkboxes.length) * 100);
+            
+            document.getElementById('progress-bar').style.width = percent + '%';
+            document.getElementById('progress-percent').textContent = percent;
         }
 
-        function goToSection(index) {
-            currentSection = index;
-            renderSection();
-            saveState();
-            toggleSidebar(); // Close sidebar on mobile
+        function saveChecklist() {
+            const checkboxes = document.querySelectorAll('.checklist-checkbox');
+            const states = Array.from(checkboxes).map(cb => cb.classList.contains('checked'));
+            localStorage.setItem('protocol-checklist', JSON.stringify(states));
         }
 
-        function nextSection() {
-            if (currentSection < sections.length - 1) {
-                currentSection++;
-                renderSection();
-                saveState();
+        function loadChecklist() {
+            const saved = localStorage.getItem('protocol-checklist');
+            if (saved) {
+                const states = JSON.parse(saved);
+                const checkboxes = document.querySelectorAll('.checklist-checkbox');
+                states.forEach((state, index) => {
+                    if (state && checkboxes[index]) {
+                        checkboxes[index].classList.add('checked');
+                        checkboxes[index].textContent = '✓';
+                    }
+                });
             }
         }
 
-        function previousSection() {
-            if (currentSection > 0) {
-                currentSection--;
-                renderSection();
-                saveState();
+        function scrollToSection(id) {
+            const element = document.getElementById(id);
+            if (element) {
+                element.scrollIntoView({ behavior: 'smooth' });
             }
         }
 
-        function increaseFont() {
-            if (fontSize < 24) {
-                fontSize += 2;
-                applyFontSize();
-                saveState();
-            }
-        }
-
-        function decreaseFont() {
-            if (fontSize > 12) {
-                fontSize -= 2;
-                applyFontSize();
-                saveState();
-            }
-        }
-
-        function applyFontSize() {
-            document.getElementById('content-area').style.fontSize = fontSize + 'px';
-            document.getElementById('font-size').textContent = fontSize + 'px';
-        }
-
-        function toggleSidebar() {
-            const sidebar = document.getElementById('sidebar');
-            sidebar.classList.toggle('mobile-open');
-        }
-
-        function setupAudio() {
-            const audio = document.getElementById('audio-player');
-            const slider = document.getElementById('progress-slider');
-            const currentTimeEl = document.getElementById('current-time');
-            const durationEl = document.getElementById('duration');
-
-            // Set audio source
-            audio.src = '/psychopath-mode-pt.mp3';
-
-            audio.addEventListener('loadedmetadata', () => {
-                durationEl.textContent = formatTime(audio.duration);
-            });
-
-            audio.addEventListener('timeupdate', () => {
-                if (audio.duration) {
-                    slider.value = (audio.currentTime / audio.duration) * 100;
-                }
-                currentTimeEl.textContent = formatTime(audio.currentTime);
-            });
-
-            audio.addEventListener('ended', () => {
-                document.getElementById('play-icon').textContent = '▶';
-            });
-        }
-
-        function toggleAudio() {
-            const audio = document.getElementById('audio-player');
-            const icon = document.getElementById('play-icon');
-
-            if (audio.paused) {
-                audio.play();
-                icon.textContent = '⏸';
-            } else {
-                audio.pause();
-                icon.textContent = '▶';
-            }
-        }
-
-        function seekAudio(value) {
-            const audio = document.getElementById('audio-player');
-            if (audio.duration) {
-                audio.currentTime = (value / 100) * audio.duration;
-            }
-        }
-
-        function setVolume(value) {
-            const audio = document.getElementById('audio-player');
-            audio.volume = value / 100;
-        }
-
-        function formatTime(seconds) {
-            if (!seconds || isNaN(seconds)) return '0:00';
-            const minutes = Math.floor(seconds / 60);
-            const secs = Math.floor(seconds % 60);
-            return `${minutes}:${secs.toString().padStart(2, '0')}`;
-        }
-
-        function saveState() {
-            localStorage.setItem('ebook-section', currentSection.toString());
-            localStorage.setItem('ebook-fontSize', fontSize.toString());
-        }
-
-        function loadState() {
-            const saved = localStorage.getItem('ebook-section');
-            if (saved) currentSection = parseInt(saved);
-
-            const savedFont = localStorage.getItem('ebook-fontSize');
-            if (savedFont) {
-                fontSize = parseInt(savedFont);
-                applyFontSize();
-            }
-        }
-
-        // Start the app
+        // Start
         init();
     </script>
 </body>
